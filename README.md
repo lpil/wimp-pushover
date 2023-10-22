@@ -1,10 +1,13 @@
 # wimp
 
-A Gleam client for the Pushover push notification API.
-
 [![Package Version](https://img.shields.io/hexpm/v/wimp)](https://hex.pm/packages/wimp)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/wimp/)
 
+A Gleam client for the Pushover push notification API.
+
+```sh
+gleam add wimp
+```
 ```gleam
 import wimp
 import gleam/httpc
@@ -18,10 +21,6 @@ pub fn send_notification() {
   response
   |> wimp.decode_message_response
 }
-```
-
-```sh
-gleam add wimp
 ```
 
 Code documentation can be found at <https://hexdocs.pm/wimp>.
