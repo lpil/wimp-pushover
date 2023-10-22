@@ -1,22 +1,29 @@
 # wimp
 
+A Gleam client for the Pushover push notification API.
+
 [![Package Version](https://img.shields.io/hexpm/v/wimp)](https://hex.pm/packages/wimp)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/wimp/)
 
-## Quick start
+```gleam
+import wimp
+import gleam/httpc
 
-```sh
-gleam run   # Run the project
-gleam test  # Run the tests
-gleam shell # Run an Erlang shell
+pub fn send_notification() {
+  let assert Ok(response) =
+    wimp.new(token: token, user: user, message: "Hello, Joe!")
+    |> wimp.message_request
+    |> httpc.send
+
+  response
+  |> wimp.decode_message_response
+}
 ```
-
-## Installation
-
-If available on Hex this package can be added to your Gleam project:
 
 ```sh
 gleam add wimp
 ```
 
-and its documentation can be found at <https://hexdocs.pm/wimp>.
+Code documentation can be found at <https://hexdocs.pm/wimp>.
+
+More information about the Pushover API can be found at <https://pushover.net/api>.
