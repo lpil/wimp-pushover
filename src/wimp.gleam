@@ -3,12 +3,12 @@
 //// https://pushover.net/api
 
 import gleam/http.{Post}
-import gleam/http/request.{Request}
-import gleam/http/response.{Response}
+import gleam/http/request.{type Request}
+import gleam/http/response.{type Response}
 import gleam/int
 import gleam/list
-import gleam/json.{Json}
-import gleam/option.{None, Option, Some}
+import gleam/json.{type Json}
+import gleam/option.{type Option, None, Some}
 import gleam/result
 import gleam/string
 
