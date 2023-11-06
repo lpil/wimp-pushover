@@ -14,6 +14,7 @@ import gleam/string
 
 pub type Error {
   MessageLimitExceeded(limits: Limits)
+  InvalidApplicationToken
   BadRequest(body: String)
   RateLimited(limits: Limits, body: String)
   UnexpectedResponse(status: Int, body: String)
@@ -274,7 +275,11 @@ pub fn decode_message_response(resp: Response(String)) -> Result(Limits, Error) 
     )
   case resp.status {
     200 -> Ok(limits)
-    400 -> Error(BadRequest(resp.body))
+    400 ->
+      Error(case string.contains(resp.body, "application token is invalid") {
+        True -> InvalidApplicationToken
+        False -> BadRequest(resp.body)
+      })
     429 -> Error(RateLimited(limits, resp.body))
     code -> Error(UnexpectedResponse(code, resp.body))
   }
