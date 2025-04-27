@@ -6,8 +6,8 @@ import gleam/http.{Post}
 import gleam/http/request.{type Request}
 import gleam/http/response.{type Response}
 import gleam/int
-import gleam/list
 import gleam/json.{type Json}
+import gleam/list
 import gleam/option.{type Option, None, Some}
 import gleam/result
 import gleam/string

@@ -1,6 +1,6 @@
+import gleam/httpc
 import gleeunit
 import wimp
-import gleam/httpc
 
 pub fn main() {
   gleeunit.main()
